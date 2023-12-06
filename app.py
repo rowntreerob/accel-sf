@@ -14,12 +14,9 @@ from twilio.rest import Client
 st.title('311+🫶')
 image = Image.open('bridge.jpeg')
 st.image(image, caption='Golden Gate Bridge')
-# need OpenAI API Key in .env
-# Set the API endpoint and your API key
-url = "https://api.openai.com/v1/completions"
-
+# Set the proxy endpoint where  API key is added to req.headers
+url = "https://api.pawan.krd/v1/completions" #rev-proxy does NOT require a key , just a token
 api_key = st.secrets['OPENAI_API_KEY'] #os.environ.get('OPENAI_API_KEY')
-
 problem_input = st.text_input('What is the problem, please') 
 uploaded_file = st.file_uploader("Upload An Image",type=['png','jpeg','jpg'])
 location = st.text_input("What is the location of the problem?")
@@ -32,7 +29,7 @@ if st.button('Enter'):
         st.write(file_details)
         encoded_file = base64.encodebytes(uploaded_file.read())
         output_temporary_file = b64encode(encoded_file).decode('utf-8')
-        print(output_temporary_file)
+#        print(output_temporary_file)
 
         # Set the request headers
         headers = {
@@ -41,16 +38,24 @@ if st.button('Enter'):
         }
         # Set the request data
         data = { 
-            "model": "text-davinci-003",
+            "model": "pai-001-beta",
             "prompt": f"Score the urgency of the user's request {problem_input}. Return a score between 0 and 1 where 0 is low urgency and 1 is high urgency. Graffiti is not very urgent, public safety is more important, as is cars blocking people.",
             "max_tokens": 2400,
             "temperature": 0.1,
+			"stop": [
+				"Human:",
+				"AI:"
+			]
         }
         data2 = { 
-            "model": "text-davinci-003",
+            "model": "pai-001-beta",
             "prompt": f"Which San Francisco city department could help with the user's request: {problem_input}",
             "max_tokens": 2400,
             "temperature": 0.1,
+            "stop": [
+				"Human:",
+				"AI:"
+			]
         } 
 
         # Send the request and store the response
@@ -58,17 +63,19 @@ if st.button('Enter'):
         department = requests.post(url, headers=headers, json=data2)
         # Parse the response
         response_data = urgency.json()
+        department_data = department.json()
+        print(department_data)
         urgency_num = response_data['choices'][0]['text']
-        print(urgency_num)
+        #print(urgency_num)
+        print(response_data)
         dept_data = department.json()
         dept = dept_data['choices'][0]['text']
-        #account_sid = os.environ['TWILIO_ACCOUNT_SID']
         account_sid = st.secrets['TWILIO_ACCOUNT_SID']
         auth_token = st.secrets['TWILIO_AUTH_TOKEN']
         client = Client(account_sid, auth_token)
         client.messages.create(
             to=user_num,
-            from_="8553021845",
+            from_="+18552331737",
             body="Got your chat message. Someone from the City will reach out soon."
         ) 
         #hit 
