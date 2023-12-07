@@ -7,14 +7,14 @@ Get started by following instructions below:
 python3 -m pip install -r requirements.txt
 ```
 
-#### See the instructions for  "OPENAI_API_KEY"
+#### See the instructions for  "Use Our Hosted API Reverse"
 [hosted proxy](https://github.com/PawanOsman/ChatGPT/tree/main#use-our-hosted-api-reverse-proxy)  
 ```
-go to the discord server
+go to the discord server mentioned in the link
 sign up  and wait for 10 min to elapse  
-follow instructions to get a personal key to the proxy
+follow instructions to get a personal key to use with the reverse proxy
 this key used as **OPENAI_API_KEY** in conjunction with api calls to endpt. below  
-api.pawan.krd/v1/completions  
+api.pawan.krd/v1/completions  # note calls on the proxy are relayed to openai
 ```
 #### Twilio account credentials
 use the [dashboard](https://console.twilio.com/us1/account/keys-credentials/api-keys) for account, SID, and token  
