@@ -29,11 +29,6 @@ OPENAI_API_KEY = "<your-key>"
 TWILIO_ACCOUNT_SID = "<your-value>"
 TWILIO_AUTH_TOKEN = "<your-token>"
 ```
-#### Edits to app.py to insert the hosted proxy in place of api.openai.com 
-change [urls and print statements](https://github.com/rowntreerob/demo311/blob/master/public/dif_1.png)  
-change [model and stop props](https://github.com/rowntreerob/demo311/blob/master/public/dif_2.png)
-above in 2 places *data, data2*  
-change [twilio number and print statements](https://github.com/rowntreerob/demo311/blob/master/public/dif_3.png)  
 #### run the app using streamlit for host-server  
 ```
  rob@penguin:~/src/accelerate-sf-hackathon-streamlit$ streamlit run app.py  
