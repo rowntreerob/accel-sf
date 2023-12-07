@@ -4,6 +4,7 @@ Get started by following instructions below:
 
 #### clone it and then install the apps dependencies 
 ```
+git clone https://github.com/rowntreerob/accel-sf.git
 pip install -r requirements.txt
 ```
 
