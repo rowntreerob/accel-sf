@@ -18,6 +18,7 @@ this key used as **OPENAI_API_KEY** in conjunction with api calls to endpt. belo
 api.pawan.krd/v1/completions  # note calls on the proxy are relayed to openai
 ```
 #### Twilio account credentials
+Get an account on twilio  
 use the [dashboard](https://console.twilio.com/us1/account/keys-credentials/api-keys) for account, SID, and token  
 the sample app uses Twilio sms  
 dashboard will create/list your [twilio phone number](https://console.twilio.com/us1/develop/phone-numbers/manage/incoming)  
