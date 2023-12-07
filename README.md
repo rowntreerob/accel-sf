@@ -4,7 +4,7 @@ Get started by following instructions below:
 
 #### clone it and then install the apps dependencies 
 ```
-python3 -m pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 #### See the instructions for  "Use Our Hosted API Reverse"
